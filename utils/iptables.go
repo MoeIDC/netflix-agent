@@ -3,18 +3,25 @@ package utils
 import (
 	"crypto/rand"
 	"github.com/coreos/go-iptables/iptables"
-	"log"
+	"github.com/evsio0n/log"
 	"math/big"
 	"net"
+	"os"
 )
 
 var ip6t *iptables.IPTables
 
+var IsDebug = GetConfig().GetBool("log.debug")
+var HaseDate = GetConfig().GetBool("log.date.show")
+
 func init() {
+	log.SetDebug(IsDebug)
+	log.IsShowDate(HaseDate)
 	var err error
 	ip6t, err = iptables.NewWithProtocol(iptables.ProtocolIPv6)
 	if err != nil {
-		log.Panic(err)
+		log.Error(err)
+		os.Exit(1)
 	}
 }
 
@@ -77,7 +84,7 @@ func getRandomIPv6() net.IP {
 
 	offset, err := rand.Int(rand.Reader, big.NewInt(0).Sub(endInt, startInt))
 	if err != nil {
-		log.Print(err)
+		log.Info(err)
 	}
 
 	v6Int := big.NewInt(0).Add(startInt, offset)

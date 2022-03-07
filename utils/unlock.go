@@ -3,7 +3,7 @@ package utils
 import (
 	"crypto/tls"
 	"fmt"
-	"log"
+	"github.com/evsio0n/log"
 	"net"
 	"net/http"
 	"net/url"
@@ -15,7 +15,7 @@ func TestUnblock() bool {
 	var netflixV6 string
 	ns, err := net.LookupHost("www.netflix.com")
 	if err != nil {
-		log.Printf("Err: %s", err.Error())
+		log.Error("Err: " + err.Error())
 		return false
 	}
 
@@ -34,7 +34,7 @@ func TestUnblock() bool {
 func RequestIP(requrl string, ip string) string {
 	urlValue, err := url.Parse(requrl)
 	if err != nil {
-		fmt.Printf("Url Parse error: %v", err)
+		log.Error("Url Parse error: " + err.Error())
 		return "Error"
 	}
 	host := urlValue.Host
@@ -59,7 +59,7 @@ func RequestIP(requrl string, ip string) string {
 	req, err := http.NewRequest("GET", newrequrl, nil)
 	if err != nil {
 		//return errors.New(strings.ReplaceAll(err.Error(), newrequrl, requrl))
-		fmt.Printf("http request err: %v", err)
+		log.Error("http request err: " + err.Error())
 		return "Error"
 	}
 	req.Host = host
@@ -67,7 +67,7 @@ func RequestIP(requrl string, ip string) string {
 	resp, err := client.Do(req)
 	if err != nil {
 		//return errors.New(strings.ReplaceAll(err.Error(), newrequrl, requrl))
-		fmt.Printf("http request err: %v", err)
+		log.Error("http request err: " + err.Error())
 		return "Error"
 	}
 	defer resp.Body.Close()

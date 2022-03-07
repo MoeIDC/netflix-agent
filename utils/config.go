@@ -17,7 +17,8 @@ func GetConfig() *viper.Viper {
 	c.SetDefault("net.interface.name", "ens160")
 
 	c.SetDefault("mode", "iptables")
-
+	c.SetDefault("log.debug", "false")
+	c.SetDefault("log.date.show", "true")
 	c.SetDefault("netflix.title", "70143836")
 	replacer := strings.NewReplacer(".", "_")
 	c.SetEnvKeyReplacer(replacer)

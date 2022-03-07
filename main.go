@@ -10,8 +10,8 @@ import (
 var err error
 
 func init() {
-	log.SetDebug(true)
-	log.IsShowDate(true)
+	log.SetDebug(utils.IsDebug)
+	log.IsShowDate(utils.HaseDate)
 }
 
 func main() {
