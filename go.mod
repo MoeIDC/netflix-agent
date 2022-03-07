@@ -2,7 +2,7 @@ module netflix_agent
 
 go 1.14
 
-require (
-	github.com/coreos/go-iptables v0.6.0
-	github.com/spf13/viper v1.10.1
-)
+replace netflix_agent/utils => ./utils
+
+
+require netflix_agent/utils v0.0.0-00010101000000-000000000000
