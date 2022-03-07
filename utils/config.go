@@ -19,7 +19,6 @@ func GetConfig() *viper.Viper {
 	c.SetDefault("mode", "iptables")
 
 	c.SetDefault("netflix.title", "70143836")
-
 	replacer := strings.NewReplacer(".", "_")
 	c.SetEnvKeyReplacer(replacer)
 	c.ReadInConfig()
