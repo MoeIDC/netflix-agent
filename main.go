@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"log"
+	"github.com/evsio0n/log"
 	"netflix_agent/utils"
 	"os"
 	"os/user"
@@ -33,13 +33,14 @@ func main() {
 func detectBlock() {
 	for true {
 		if !utils.TestUnblock() {
-			log.Println("Unblock failing, changing IP...")
+			log.Info("Unblock failing, changing IP...")
 			err := utils.ChangeIPv6()
 			if err != nil {
-				log.Panic(err)
+				log.Error(err)
+				os.Exit(1)
 			}
 		} else {
-			log.Println("Unblock OK")
+			log.Info("Unblock OK")
 		}
 		time.Sleep(time.Second * 30)
 	}
