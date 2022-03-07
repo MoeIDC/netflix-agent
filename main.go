@@ -12,15 +12,10 @@ var err error
 func init() {
 	log.SetDebug(true)
 	log.IsShowDate(true)
-	//check if user is run as root
-	if os.Geteuid() != 0 {
-		log.Error("You must run this program as root")
-		os.Exit(1)
-	}
-	err = utils.ChangeIPv6()
 }
 
 func main() {
+	err = utils.ChangeIPv6()
 	if err != nil {
 		log.Fatal(err)
 		os.Exit(1)
