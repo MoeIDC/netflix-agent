@@ -10,7 +10,7 @@ import (
 var err error
 
 func init() {
-	log.SetDebug(utils.IsDebug)
+	log.SetDebug(true)
 	log.IsShowDate(utils.HaseDate)
 	err = utils.ChangeIPv6()
 	if err != nil {

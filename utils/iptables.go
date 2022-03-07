@@ -15,7 +15,7 @@ var IsDebug = GetConfig().GetBool("log.debug")
 var HaseDate = GetConfig().GetBool("log.date.show")
 
 func init() {
-	log.SetDebug(IsDebug)
+	log.SetDebug(true)
 	log.IsShowDate(HaseDate)
 
 	if true {
