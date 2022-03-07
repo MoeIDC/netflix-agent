@@ -11,6 +11,7 @@ func GetConfig() *viper.Viper {
 	c.SetConfigType("yaml")
 	c.SetConfigName("config")
 	c.AddConfigPath(".")
+	c.AddConfigPath("/etc/netflix-agent/")
 	c.AutomaticEnv()
 
 	c.SetDefault("net.ipv6.start", "2001:df3:2e80:4000::")
