@@ -57,6 +57,15 @@ func ChangeIPtables() error {
 }
 
 func ChangeIPv6() error {
+	//check interface exist
+	iface, err := net.InterfaceByName(GetConfig().GetString("net.interface.name"))
+	if err != nil {
+		return err
+	}
+	//check interface is up
+	if iface.Flags&net.FlagUp == 0 {
+		return err
+	}
 	if GetConfig().GetString("mode") == "iptables" {
 		err := FlushNAT()
 		if err != nil {
