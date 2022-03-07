@@ -14,7 +14,7 @@ func init() {
 	log.IsShowDate(utils.HaseDate)
 	err = utils.ChangeIPv6()
 	if err != nil {
-		log.Fatal(err)
+		log.Fatal(err.Error())
 		os.Exit(1)
 	}
 
@@ -28,10 +28,10 @@ func main() {
 func detectBlock() {
 	for true {
 		if !utils.TestUnblock() {
-			log.Info("Unblock failing, changing IP...")
+			log.Warn("Unblock failing, changing IP...")
 			err := utils.ChangeIPv6()
 			if err != nil {
-				log.Error(err)
+				log.Error(err.Error())
 				os.Exit(1)
 			}
 		} else {

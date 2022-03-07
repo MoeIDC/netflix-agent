@@ -20,14 +20,14 @@ func init() {
 
 	if true {
 		log.Info("Debug mode")
-		log.Info("IPv6 start" + GetConfig().GetString("net.ipv6.start"))
-		log.Info("IPv6 end" + GetConfig().GetString("net.ipv6.end"))
-		log.Info("Net interface name" + GetConfig().GetString("net.interface.name"))
+		log.Info("IPv6 start: " + GetConfig().GetString("net.ipv6.start"))
+		log.Info("IPv6 end: " + GetConfig().GetString("net.ipv6.end"))
+		log.Info("Net interface name: " + GetConfig().GetString("net.interface.name"))
 	}
 	var err error
 	ip6t, err = iptables.NewWithProtocol(iptables.ProtocolIPv6)
 	if err != nil {
-		log.Error(err)
+		log.Error(err.Error())
 		os.Exit(1)
 	}
 }
@@ -100,7 +100,7 @@ func getRandomIPv6() net.IP {
 
 	offset, err := rand.Int(rand.Reader, big.NewInt(0).Sub(endInt, startInt))
 	if err != nil {
-		log.Info(err)
+		log.Error(err.Error())
 	}
 
 	v6Int := big.NewInt(0).Add(startInt, offset)
