@@ -17,8 +17,6 @@ func init() {
 		log.Fatal(err.Error())
 		os.Exit(1)
 	}
-
-	detectBlock()
 }
 
 func main() {

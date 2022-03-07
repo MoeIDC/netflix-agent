@@ -1,6 +1,7 @@
 package utils
 
 import (
+	"github.com/evsio0n/log"
 	"github.com/spf13/viper"
 	"strings"
 )
@@ -22,6 +23,9 @@ func GetConfig() *viper.Viper {
 	c.SetDefault("netflix.title", "70143836")
 	replacer := strings.NewReplacer(".", "_")
 	c.SetEnvKeyReplacer(replacer)
-	c.ReadInConfig()
+	err := c.ReadInConfig()
+	if err != nil {
+		log.Info(err.Error())
+	}
 	return c
 }
