@@ -12,9 +12,6 @@ var err error
 func init() {
 	log.SetDebug(utils.IsDebug)
 	log.IsShowDate(utils.HaseDate)
-}
-
-func main() {
 	err = utils.ChangeIPv6()
 	if err != nil {
 		log.Fatal(err)
@@ -22,7 +19,10 @@ func main() {
 	}
 
 	detectBlock()
+}
 
+func main() {
+	detectBlock()
 }
 
 func detectBlock() {
