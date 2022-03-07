@@ -12,6 +12,8 @@ import (
 var err error
 
 func init() {
+	log.SetDebug(true)
+	log.IsShowDate(true)
 	//check if user is run as root
 	if u, _ := user.Current(); u.Name != "root" {
 		err = fmt.Errorf("You must run this program as root")
