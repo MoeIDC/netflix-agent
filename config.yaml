@@ -4,3 +4,4 @@ net.interface: ens160
 mode: iptables
 netflix.title: 70143836
 log.debug: true
+log.date.show: true
