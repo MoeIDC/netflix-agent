@@ -1,11 +1,9 @@
 package main
 
 import (
-	"fmt"
 	"github.com/evsio0n/log"
 	"netflix_agent/utils"
 	"os"
-	"os/user"
 	"time"
 )
 
@@ -15,11 +13,11 @@ func init() {
 	log.SetDebug(true)
 	log.IsShowDate(true)
 	//check if user is run as root
-	if u, _ := user.Current(); u.Name != "root" {
-		err = fmt.Errorf("You must run this program as root")
-	} else {
-		err = utils.ChangeIPv6()
+	if os.Geteuid() != 0 {
+		log.Error("You must run this program as root")
+		os.Exit(1)
 	}
+	err = utils.ChangeIPv6()
 }
 
 func main() {
