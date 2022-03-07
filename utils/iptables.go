@@ -17,6 +17,13 @@ var HaseDate = GetConfig().GetBool("log.date.show")
 func init() {
 	log.SetDebug(IsDebug)
 	log.IsShowDate(HaseDate)
+
+	if IsDebug {
+		log.Info("Debug mode")
+		log.Info("IPv6 start" + GetConfig().GetString("net.ipv6.start"))
+		log.Info("IPv6 end" + GetConfig().GetString("net.ipv6.end"))
+		log.Info("Net interface name" + GetConfig().GetString("net.interface.name"))
+	}
 	var err error
 	ip6t, err = iptables.NewWithProtocol(iptables.ProtocolIPv6)
 	if err != nil {

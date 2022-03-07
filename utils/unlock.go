@@ -2,7 +2,6 @@ package utils
 
 import (
 	"crypto/tls"
-	"fmt"
 	"github.com/evsio0n/log"
 	"net"
 	"net/http"
@@ -27,7 +26,7 @@ func TestUnblock() bool {
 	}
 
 	res := RequestIP("https://www.netflix.com/title/70143836", netflixV6)
-	fmt.Println(res)
+	log.Info(res)
 	return !strings.Contains(res, "Error") && !strings.Contains(res, "Ban")
 }
 
