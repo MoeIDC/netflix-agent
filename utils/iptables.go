@@ -2,6 +2,7 @@ package utils
 
 import (
 	"crypto/rand"
+	"fmt"
 	"github.com/coreos/go-iptables/iptables"
 	"github.com/evsio0n/log"
 	"math/big"
@@ -60,7 +61,7 @@ func ChangeIPv6() error {
 	//check interface exist
 	iface, err := net.InterfaceByName(GetConfig().GetString("net.interface.name"))
 	if err != nil {
-		return err
+		return fmt.Errorf("no such interface: %s", GetConfig().GetString("net.interface.name"))
 	}
 	//check interface is up
 	if iface.Flags&net.FlagUp == 0 {
