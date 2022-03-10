@@ -23,6 +23,7 @@ func GetConfig() *viper.Viper {
 	c.SetDefault("log.date.show", "true")
 	c.SetDefault("netflix.title", "70143836")
 	c.SafeWriteConfigAs("./config.yaml")
+	c.SafeWriteConfig()
 	replacer := strings.NewReplacer(".", "_")
 	c.SetEnvKeyReplacer(replacer)
 	err := c.ReadInConfig()
