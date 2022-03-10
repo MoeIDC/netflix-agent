@@ -12,7 +12,7 @@ dry:
 	go build -o ${BINARY_NAME} main.go
 
 systemd: build
-	cp ./{BINARY_NAME} ${BINARY_PATH}
+	cp ./${BINARY_NAME} ${BINARY_PATH}
 	cp ./netflix-agent.service /lib/systemd/system/
 	if [ ! -d /etc/netflix-agent ]; then
 		mkdir /etc/netflix-agent
