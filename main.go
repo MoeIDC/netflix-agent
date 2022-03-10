@@ -31,7 +31,7 @@ func main() {
 		for {
 			switch sig {
 			case syscall.SIGHUP, syscall.SIGINT, syscall.SIGTERM, syscall.SIGQUIT, os.Interrupt:
-				log.Info("get a signal %s, stop the process", sig.String())
+				log.Info("get a signal:" + sig.String() + " , stop the process")
 				utils.FlushNAT()
 				os.Exit(0)
 			}
