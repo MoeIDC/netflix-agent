@@ -1,9 +1,9 @@
 log:
   date:
-    show: "true"
+    show: "false"
   debug: "false"
   syslog:
-    enabled: "false"
+    enabled: "true"
 mode: iptables
 net:
   interface:
