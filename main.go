@@ -51,7 +51,7 @@ func detectBlock() {
 				os.Exit(1)
 			}
 		} else {
-			log.Info("Unblock OK")
+			log.Debug("Unblock OK")
 		}
 		time.Sleep(time.Second * 30)
 	}
