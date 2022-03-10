@@ -2,6 +2,8 @@ log:
   date:
     show: "true"
   debug: "false"
+  syslog:
+    enabled: "false"
 mode: iptables
 net:
   interface:

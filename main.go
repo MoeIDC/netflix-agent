@@ -4,6 +4,8 @@ import (
 	"github.com/evsio0n/log"
 	"netflix_agent/utils"
 	"os"
+	"os/signal"
+	"syscall"
 	"time"
 )
 
@@ -22,6 +24,21 @@ func init() {
 }
 
 func main() {
+	signalChannel := make(chan os.Signal, 2)
+	signal.Notify(signalChannel, os.Interrupt, syscall.SIGTERM)
+	go func() {
+		sig := <-signalChannel
+		switch sig {
+		case os.Interrupt:
+			//handle SIGINT
+			log.Info("SIGINT received. Shutting down...")
+			utils.FlushNAT()
+		case syscall.SIGTERM:
+			//handle SIGTERM
+			log.Info("SIGINT received. Shutting down...")
+			utils.FlushNAT()
+		}
+	}()
 	detectBlock()
 }
 
