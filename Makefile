@@ -14,9 +14,7 @@ dry:
 systemd: build
 	cp ./${BINARY_NAME} ${BINARY_PATH}
 	cp ./netflix-agent.service /lib/systemd/system/
-	if [ ! -d /etc/netflix-agent ]; then
-		mkdir /etc/netflix-agent
-	fi
+	if [ ! -d /etc/netflix-agent ]; then	mkdir /etc/netflix-agent; fi
 	cp ./config.yaml /etc/netflix-agent/
 
 install: systemd
