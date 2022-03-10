@@ -33,6 +33,7 @@ func main() {
 			case syscall.SIGHUP, syscall.SIGINT, syscall.SIGTERM, syscall.SIGQUIT, os.Interrupt:
 				log.Info("get a signal:" + sig.String() + " , stop the process")
 				utils.FlushNAT()
+				log.Info("flush nat iptables success, exiting...")
 				os.Exit(0)
 			}
 		}
