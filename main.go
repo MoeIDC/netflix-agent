@@ -25,18 +25,16 @@ func init() {
 
 func main() {
 	signalChannel := make(chan os.Signal, 2)
-	signal.Notify(signalChannel, os.Interrupt, syscall.SIGTERM)
+	signal.Notify(signalChannel, syscall.SIGHUP, syscall.SIGQUIT, syscall.SIGTERM, syscall.SIGSTOP, syscall.SIGUSR1)
 	go func() {
-		sig := <-signalChannel
-		switch sig {
-		case os.Interrupt:
-			//handle SIGINT
-			log.Info("SIGINT received. Shutting down...")
-			utils.FlushNAT()
-		case syscall.SIGTERM:
-			//handle SIGTERM
-			log.Info("SIGINT received. Shutting down...")
-			utils.FlushNAT()
+		for {
+			sig := <-signalChannel
+			switch sig {
+			default:
+				log.Info("get a signal %s, stop the process", sig.String())
+				utils.FlushNAT()
+				return
+			}
 		}
 	}()
 	detectBlock()
