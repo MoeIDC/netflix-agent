@@ -1,7 +1,15 @@
-net.ipv6.start: '2001:df3:2e80:4000::'
-net.ipv6.end: '2001:df3:2e80:4000:ffff:ffff:ffff:ffff'
-net.interface: ens170
-mode: iptables
-netflix.title: '70143836'
-log.debug: true
-log.date.show: true
+net:
+  ipv6:
+    start: '2001:df3:2e80:4000::'
+    end: '2001:df3:2e80:4000:ffff:ffff:ffff:ffff'
+  interface: 'ens170'
+
+mode: 'iptables'
+
+netfilx:
+  title: '70143836'
+
+log:
+  debug: true
+  date:
+    show: true

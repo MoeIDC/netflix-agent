@@ -19,7 +19,7 @@ func init() {
 	log.SetDebug(true)
 	log.IsShowDate(HaseDate)
 
-	if true {
+	if GetConfig().GetBool("log.debug") {
 		log.Info("Debug mode")
 		log.Info("IPv6 start: " + GetConfig().GetString("net.ipv6.start"))
 		log.Info("IPv6 end: " + GetConfig().GetString("net.ipv6.end"))
