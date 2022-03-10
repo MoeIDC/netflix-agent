@@ -20,4 +20,3 @@ systemd: build
 install: systemd
 	systemctl daemon-reload
 	systemctl enable netflix-agent
-	systemctl start netflix-agent
