@@ -11,3 +11,6 @@ sudo make install
 
 ##  更改IP
 在/etc/netflix-agent/config.yaml 更改
+
+## 帖子
+https://bbs.idc.moe/d/29
