@@ -10,10 +10,10 @@ import (
 var err error
 
 func init() {
-	log.SetDebug(false)
+	log.SetDebug(utils.IsDebug)
 	log.IsShowLogCatagory(false)
-	log.SetSyslog(true, "netflix-agent")
-	log.IsShowDate(utils.HaseDate)
+	log.SetSyslog(utils.IsSyslog, "netflix-agent")
+	log.IsShowDate(utils.LogHaseDate)
 	err = utils.ChangeIPv6()
 	if err != nil {
 		log.Fatal(err.Error())

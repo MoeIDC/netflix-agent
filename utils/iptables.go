@@ -13,12 +13,13 @@ import (
 var ip6t *iptables.IPTables
 
 var IsDebug = GetConfig().GetBool("log.debug")
-var HaseDate = GetConfig().GetBool("log.date.show")
+var LogHaseDate = GetConfig().GetBool("log.date.show")
+var IsSyslog = GetConfig().GetBool("log.syslog.enabled")
 
 func init() {
-	log.SetDebug(true)
-	log.IsShowDate(HaseDate)
-
+	log.SetDebug(IsDebug)
+	log.IsShowDate(LogHaseDate)
+	log.SetSyslog(IsSyslog, "netflix-agent")
 	if GetConfig().GetBool("log.debug") {
 		log.Info("Debug mode")
 		log.Info("IPv6 start: " + GetConfig().GetString("net.ipv6.start"))
